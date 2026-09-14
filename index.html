@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Levi Resource Library</title>
+<style>
+  :root{
+    --bg:#faf9f7; --card:#ffffff; --ink:#1f2320; --muted:#6b6f6c; --line:#e7e4de;
+    --accent:#2f6b4f; --chip:#eef3ee;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#15181a; --card:#1d2124; --ink:#eef0ee; --muted:#a3a8a3; --line:#2b3033;
+      --accent:#5fae86; --chip:#20302a;
+    }
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    padding:32px 16px 64px;
+  }
+  .wrap{max-width:920px; margin:0 auto;}
+  header{margin-bottom:32px;}
+  h1{font-size:1.6rem; margin:0 0 6px;}
+  .sub{color:var(--muted); font-size:0.95rem; margin:0;}
+  .search{
+    width:100%; margin-top:20px; padding:12px 14px; border-radius:10px;
+    border:1px solid var(--line); background:var(--card); color:var(--ink);
+    font-size:0.95rem;
+  }
+  section{margin-bottom:28px;}
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between; gap:12px;
+    padding:2px 4px 10px; border-bottom:1px solid var(--line); margin-bottom:12px;
+  }
+  .section-head h2{font-size:1.05rem; margin:0;}
+  .count{color:var(--muted); font-size:0.85rem; white-space:nowrap;}
+  .grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:10px;
+  }
+  a.file{
+    display:flex; align-items:center; gap:10px;
+    background:var(--card); border:1px solid var(--line); border-radius:10px;
+    padding:11px 12px; text-decoration:none; color:var(--ink); font-size:0.9rem;
+  }
+  a.file:hover{border-color:var(--accent);}
+  .ext{
+    flex:0 0 auto; font-size:0.65rem; font-weight:700; letter-spacing:.02em;
+    padding:3px 6px; border-radius:6px; background:var(--chip); color:var(--accent);
+  }
+  .name{flex:1 1 auto; min-width:0; overflow-wrap:anywhere;}
+  footer{margin-top:40px; color:var(--muted); font-size:0.82rem; text-align:center;}
+  [hidden]{display:none!important;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Levi Resource Library</h1>
+    <p class="sub">Free downloads: Maths revision sheets, Functional Skills and GCSE English packs, and Steps to Success info sheets.</p>
+    <input class="search" id="search" type="text" placeholder="Search files..." oninput="filterFiles(this.value)">
+  </header>
+
+  <section data-section>
+    <div class="section-head"><h2>Maths Revision Sheets</h2><span class="count">40 files</span></div>
+    <div class="grid" id="grid-maths"></div>
+  </section>
+
+  <section data-section>
+    <div class="section-head"><h2>Functional Skills English (Pack A)</h2><span class="count">5 files</span></div>
+    <div class="grid" id="grid-fs"></div>
+  </section>
+
+  <section data-section>
+    <div class="section-head"><h2>GCSE English (Pack B)</h2><span class="count">7 files</span></div>
+    <div class="grid" id="grid-gcse"></div>
+  </section>
+
+  <section data-section>
+    <div class="section-head"><h2>Steps to Success - Language Info Sheets</h2><span class="count">17 files</span></div>
+    <div class="grid" id="grid-lang"></div>
+  </section>
+
+  <section data-section>
+    <div class="section-head"><h2>Steps to Success - Structural Info Sheets</h2><span class="count">12 files</span></div>
+    <div class="grid" id="grid-struct"></div>
+  </section>
+
+  <section data-section>
+    <div class="section-head"><h2>Steps to Success - Creative Info Sheets</h2><span class="count">14 files</span></div>
+    <div class="grid" id="grid-creative"></div>
+  </section>
+
+  <footer>Levi resource library</footer>
+</div>
+
+
+<script>
+  function ext(name){ return name.split('.').pop().toUpperCase(); }
+  function label(name){
+    return name.replace(/\.(html|pdf|docx)$/i,'').replace(/_/g,' ').replace(/-/g,' ');
+  }
+  function render(gridId, folder, files){
+    const grid = document.getElementById(gridId);
+    grid.innerHTML = files.map(f => {
+      const href = folder + '/' + f;
+      return '<a class="file" href="' + href + '" data-name="' + label(f).toLowerCase() + '">'
+        + '<span class="ext">' + ext(f) + '</span>'
+        + '<span class="name">' + label(f) + '</span>'
+        + '</a>';
+    }).join('');
+  }
+
+  const maths = ["Adding-and-Subtracting-Fractions.html","Algebraic-Fractions.html","Angle-Facts.html","Averages-and-Spread.html","Basic-Probability-and-Sample-Space.html","Best-Buys-and-Unit-Conversion.html","Charts-and-Data-Representation.html","Circle-Theorems.html","Collecting-Like-Terms.html","Completing-the-Square.html","Cumulative-Frequency-and-Box-Plots.html","Direct-and-Inverse-Proportion.html","Expanding-and-Factorising.html","Factorising-and-Solving-Quadratics.html","Improper-Fractions-to-Mixed-Numbers.html","Iteration.html","Levi-Maths-Page-Template.html","Multiplying-and-Dividing-Fractions.html","Percentages.html","Perimeter-Area-and-Volume.html","Pythagoras-Theorem.html","Quadratic-Graphs.html","Real-Life-Graphs.html","Rearranging-Formulae.html","Rounding-and-Estimation.html","Sharing-in-a-Ratio.html","Similarity-and-Congruence.html","Simultaneous-Equations.html","Sine-and-Cosine-Rules.html","Solving-Linear-Equations.html","Standard-Form.html","Straight-Line-Graphs.html","Substitution-and-Expressions.html","The-Quadratic-Formula.html","Transformations.html","Tree-Diagrams.html","Trig-Graphs.html","Trigonometry-SOHCAHTOA.html","Vector-Basics-and-Arithmetic.html","Vector-Geometry-Proofs.html","Venn-Diagrams-and-Set-Notation.html"];
+  const fs = ["Pack_A_Functional_Skills_Grammar_Punctuation_Spelling.docx","Pack_A_Functional_Skills_Reading.docx","Pack_A_Functional_Skills_Speaking_Listening_Communicating.docx","Pack_A_Functional_Skills_Writing.docx","Pack_A_Master_Index_and_Tracker.docx"];
+  const gcse = ["Pack_B_GCSE_English_Language_Paper1.docx","Pack_B_GCSE_English_Language_Paper2.docx","Pack_B_GCSE_Literature_A_Christmas_Carol.docx","Pack_B_GCSE_Literature_An_Inspector_Calls.docx","Pack_B_GCSE_Literature_Macbeth.docx","Pack_B_GCSE_Literature_Poetry.docx","Pack_B_Master_Index_and_Tracker.docx"];
+  const lang = ["01_Simile.pdf","02_Metaphor.pdf","03_Personification.pdf","04_Alliteration.pdf","05_Sibilance.pdf","06_Onomatopoeia.pdf","07_Repetition.pdf","08_Contrast.pdf","09_Juxtaposition.pdf","10_Oxymoron.pdf","11_Hyperbole.pdf","12_Rhetorical_Questions.pdf","13_Semantic_Fields.pdf","14_Connotations.pdf","15_Imagery.pdf","16_Symbolism.pdf","17_Pathetic_Fallacy.pdf"];
+  const struct = ["01_Opening.pdf","02_Ending.pdf","03_Flashback.pdf","04_Foreshadowing.pdf","05_Shifts_In_Focus.pdf","06_Changes_In_Setting.pdf","07_Changes_In_Perspective.pdf","08_Pace.pdf","09_Paragraphing.pdf","10_Sentence_Length.pdf","11_Chronological_Non_Chronological_Structure.pdf","12_Cyclical_Structure.pdf"];
+  const creative = ["01_Descriptive_Writing.pdf","02_Narrative_Writing.pdf","03_Characterisation.pdf","04_Setting.pdf","05_Atmosphere.pdf","06_Creating_Tension.pdf","07_Creating_Suspense.pdf","08_Showing_Rather_Than_Telling.pdf","09_Using_Sensory_Description.pdf","10_Planning_A_Story.pdf","11_Paragraph_Structure.pdf","12_Varied_Sentence_Structures.pdf","13_Ambitious_Vocabulary.pdf","14_Accurate_Punctuation.pdf"];
+
+  render('grid-maths','01-maths-revision/maths',maths);
+  render('grid-fs','02-functional-skills-english/fs',fs);
+  render('grid-gcse','03-gcse-english/gcse',gcse);
+  render('grid-lang','04-steps-to-success-info-sheets/steps/language',lang);
+  render('grid-struct','04-steps-to-success-info-sheets/steps/structural',struct);
+  render('grid-creative','04-steps-to-success-info-sheets/steps/creative',creative);
+
+  function filterFiles(q){
+    q = q.trim().toLowerCase();
+    const links = document.querySelectorAll('a.file');
+    links.forEach(a => { a.hidden = q && !a.dataset.name.includes(q); });
+    document.querySelectorAll('[data-section]').forEach(sec => {
+      const anyVisible = Array.from(sec.querySelectorAll('a.file')).some(a => !a.hidden);
+      sec.hidden = !anyVisible;
+    });
+  }
+</script>
+</body>
+</html>
+
