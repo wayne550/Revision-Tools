@@ -89,13 +89,22 @@
   </section>
 
   <section data-section>
-    <div class="section-head"><h2>Steps to Success - Creative Info Sheets</h2><span class="count">14 files</span></div>
+    <div class="section-head"><h2>Steps to Success - Creative Info Sheets</h2><span class="count">18 files</span></div>
     <div class="grid" id="grid-creative"></div>
+  </section>
+
+  <section data-section>
+    <div class="section-head"><h2>Steps to Success - Grammar Info Sheets</h2><span class="count">13 files</span></div>
+    <div class="grid" id="grid-grammar"></div>
+  </section>
+
+  <section data-section>
+    <div class="section-head"><h2>Steps to Success - Rhetorical &amp; Literary Devices Info Sheets</h2><span class="count">6 files</span></div>
+    <div class="grid" id="grid-rhetorical"></div>
   </section>
 
   <footer>Levi resource library</footer>
 </div>
-
 
 <script>
   function ext(name){ return name.split('.').pop().toUpperCase(); }
@@ -118,7 +127,9 @@
   const gcse = ["Pack_B_GCSE_English_Language_Paper1.docx","Pack_B_GCSE_English_Language_Paper2.docx","Pack_B_GCSE_Literature_A_Christmas_Carol.docx","Pack_B_GCSE_Literature_An_Inspector_Calls.docx","Pack_B_GCSE_Literature_Macbeth.docx","Pack_B_GCSE_Literature_Poetry.docx","Pack_B_Master_Index_and_Tracker.docx"];
   const lang = ["01_Simile.pdf","02_Metaphor.pdf","03_Personification.pdf","04_Alliteration.pdf","05_Sibilance.pdf","06_Onomatopoeia.pdf","07_Repetition.pdf","08_Contrast.pdf","09_Juxtaposition.pdf","10_Oxymoron.pdf","11_Hyperbole.pdf","12_Rhetorical_Questions.pdf","13_Semantic_Fields.pdf","14_Connotations.pdf","15_Imagery.pdf","16_Symbolism.pdf","17_Pathetic_Fallacy.pdf"];
   const struct = ["01_Opening.pdf","02_Ending.pdf","03_Flashback.pdf","04_Foreshadowing.pdf","05_Shifts_In_Focus.pdf","06_Changes_In_Setting.pdf","07_Changes_In_Perspective.pdf","08_Pace.pdf","09_Paragraphing.pdf","10_Sentence_Length.pdf","11_Chronological_Non_Chronological_Structure.pdf","12_Cyclical_Structure.pdf"];
-  const creative = ["01_Descriptive_Writing.pdf","02_Narrative_Writing.pdf","03_Characterisation.pdf","04_Setting.pdf","05_Atmosphere.pdf","06_Creating_Tension.pdf","07_Creating_Suspense.pdf","08_Showing_Rather_Than_Telling.pdf","09_Using_Sensory_Description.pdf","10_Planning_A_Story.pdf","11_Paragraph_Structure.pdf","12_Varied_Sentence_Structures.pdf","13_Ambitious_Vocabulary.pdf","14_Accurate_Punctuation.pdf"];
+  const creative = ["01_Descriptive_Writing.pdf","02_Narrative_Writing.pdf","03_Characterisation.pdf","04_Setting.pdf","05_Atmosphere.pdf","06_Creating_Tension.pdf","07_Creating_Suspense.pdf","08_Showing_Rather_Than_Telling.pdf","09_Using_Sensory_Description.pdf","10_Planning_A_Story.pdf","11_Paragraph_Structure.pdf","12_Varied_Sentence_Structures.pdf","13_Ambitious_Vocabulary.pdf","14_Accurate_Punctuation.pdf","15_Brackets.pdf","16_Colons.pdf","17_Semicolons.pdf","18_Capitalisation.pdf"];
+  const grammar = ["01_Nouns.pdf","02_Verbs.pdf","03_Adjectives.pdf","04_Adverbs.pdf","05_Pronouns.pdf","06_Prepositions.pdf","07_Conjunctions.pdf","08_Determiners.pdf","09_Interjections.pdf","10_Homophones.pdf","11_Synonyms.pdf","12_Antonyms.pdf","13_Vowels_and_Consonants.pdf"];
+  const rhetorical = ["01_Allusion.pdf","02_Anaphora.pdf","03_Assonance.pdf","04_Euphemism.pdf","05_Irony.pdf","06_Paradox.pdf"];
 
   render('grid-maths','01-maths-revision/maths',maths);
   render('grid-fs','02-functional-skills-english/fs',fs);
@@ -126,6 +137,8 @@
   render('grid-lang','04-steps-to-success-info-sheets/steps/language',lang);
   render('grid-struct','04-steps-to-success-info-sheets/steps/structural',struct);
   render('grid-creative','04-steps-to-success-info-sheets/steps/creative',creative);
+  render('grid-grammar','04-steps-to-success-info-sheets/steps/grammar',grammar);
+  render('grid-rhetorical','04-steps-to-success-info-sheets/steps/rhetorical',rhetorical);
 
   function filterFiles(q){
     q = q.trim().toLowerCase();
@@ -139,4 +152,3 @@
 </script>
 </body>
 </html>
-
